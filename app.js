@@ -1,22 +1,19 @@
+import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT;
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = process.env.MONGO_URL;
 
 main()
-  .then(res => console.log(`connected to wanderlust`))
+  .then(res => console.log(`connected to wanderlust DB`))
   .catch(err => console.error(err));
 
 async function main() {
   await mongoose.connect(MONGO_URL);
 }
-
-app.get("/", (req, res) => {
-  res.send("listening here buddy");
-});
 
 app.listen(port, () => {
   console.log(`Listening at port no. ${port}`);
