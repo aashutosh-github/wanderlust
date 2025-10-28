@@ -11,6 +11,8 @@ const MONGO_URL = process.env.MONGO_URL;
 app.set("view engine", "ejs");
 app.set("views", path.join(import.meta.dirname, "views"));
 
+app.use(express.urlencoded({ extended: true }));
+
 main()
   .then(res => console.log(`connected to wanderlust DB`))
   .catch(err => console.error(err));
@@ -27,4 +29,11 @@ app.listen(port, () => {
 app.get("/listings", async (req, res) => {
   const allListings = await Listings.find();
   res.render("./listings/index.ejs", { allListings });
+});
+
+// SHOW route
+app.get("/listings/:id", async (req, res) => {
+  const { id } = req.params;
+  const listing = await Listings.findById(id);
+  res.render("./listings/show.ejs", { listing });
 });
