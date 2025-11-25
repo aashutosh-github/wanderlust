@@ -3,6 +3,7 @@ import path from "path";
 import express from "express";
 import mongoose from "mongoose";
 import Listings from "./models/listing.js";
+import Listing from "./models/listing.js";
 
 const app = express();
 const port = process.env.PORT;
@@ -45,6 +46,7 @@ app.get("/listings/:id", async (req, res) => {
 
 // CREATE route
 app.post("/listings", async (req, res) => {
-  let listing = req.body;
-  console.log(listing);
+  const newListing = new Listing(req.body.listing);
+  await newListing.save();
+  res.redirect("/listings");
 });
