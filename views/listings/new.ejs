@@ -6,18 +6,21 @@
 	<title>Wanderlust</title>
 </head>
 <body>
-    <form  method="POST">
-        <input type="text" name="title" placeholder="Enter Title here">
+
+    <!-- Writing the names in such a way so that the particular attribute is saved inside a listing object inside of the req.body -->
+
+    <form  action="/listings" method="post">
+        <input type="text" name="listing[title]" placeholder="Enter Title here">
         <br>
-        <textarea name="description" placeholder="Enter Description"></textarea>
+        <textarea name="listing[description]" placeholder="listing Enter Description"></textarea>
         <br>
-        <input type="text" name="image" placeholder="Enter Image URL/Link">
+        <input type="text" name="listing[image]" placeholder="Enter Image URL/Link">
         <br>
-        <input type="number" name="price" placeholder="Enter Price">
+        <input type="number" name="listing[price]" placeholder="Enter Price">
         <br>
-        <input type="text" name="country" placeholder="Enter Country">
+        <input type="text" name="listing[country]" placeholder="Enter Country">
         <br>
-        <input type="text" name="location" placeholder="Enter Location">
+        <input type="text" name="listing[location]" placeholder="Enter Location">
         <br>
         <button>Add</button>
     </form>
