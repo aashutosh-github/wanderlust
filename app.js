@@ -50,3 +50,10 @@ app.post("/listings", async (req, res) => {
   await newListing.save();
   res.redirect("/listings");
 });
+
+//EDIT route
+app.get("/listings/:id/edit", async (req, res) => {
+  const { id } = req.params;
+  const listing = await Listing.findById(id);
+  res.render("./listings/edit.ejs", { listing });
+});
