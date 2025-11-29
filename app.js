@@ -4,6 +4,7 @@ import express from "express";
 import mongoose from "mongoose";
 import Listings from "./models/listing.js";
 import Listing from "./models/listing.js";
+import methodOverride from "method-override";
 
 const app = express();
 const port = process.env.PORT;
@@ -13,6 +14,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(import.meta.dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 main()
   .then(res => console.log(`connected to wanderlust DB`))
