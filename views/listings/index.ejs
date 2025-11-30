@@ -6,13 +6,13 @@
     <title>Wanderlust</title>
   </head>
   <body>
-    <h1>All Listings</h1>
-    <ul>
-      <% for (let element of allListings) { %>
-      <li>
-        <a href="/listings/<%=element._id%>"><%=element.title%></a>
-      </li>
-      <% } %>
-    </ul>
+      <h1>All Listings</h1>
+      <ul>
+          <% for (let element of allListings) { %>
+              <li>
+                  <a href="/listings/<%=element._id%>"><%=element.title%></a>
+              </li>
+              <% } %>
+      </ul>
   </body>
 </html>
